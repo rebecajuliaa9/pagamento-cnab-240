@@ -2,7 +2,8 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
 
-use Leandroferreirama\PagamentoCnab240\Dominio\Conta;
+use Leandroferreirama\PagamentoCnab240\Aplicacao\GerarArquivo;
+use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
 use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 abstract class Banco
@@ -47,10 +48,19 @@ abstract class Banco
         ];
     }
 
+    public function pastaRemessa()
+    {
+        return HelperBanco::pastaRemessa($this->pastaBanco());
+    }
+
+    public function pastaRetorno()
+    {
+        return HelperBanco::pastaRetorno($this->pastaBanco());
+    }
+
     abstract public function numero();
     abstract public function nome();
-    abstract public function pastaRemessa();
-    abstract public function pastaRetorno();
+    abstract public function pastaBanco();
     abstract public function headerArquivo();
     abstract public function strPadNumero();
     abstract public function strPadTexto();

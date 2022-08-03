@@ -4,9 +4,6 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Favorecido;
 
 class FavorecidoConta
 {
-    const CONTACORRENTE = 'CC';
-    const POUPANCA = 'PP';
-
     public $tipoConta;
     public $agencia;
     public $conta;

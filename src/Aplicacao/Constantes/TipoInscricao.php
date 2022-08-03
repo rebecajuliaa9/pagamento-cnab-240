@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Aplicacao;
+namespace Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes;
 
 class TipoInscricao
 {

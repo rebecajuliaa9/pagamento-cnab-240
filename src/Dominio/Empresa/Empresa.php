@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio;
+namespace Leandroferreirama\PagamentoCnab240\Dominio\Empresa;
 
 use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
 

@@ -2,6 +2,8 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Aplicacao;
 
+use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\TipoInscricao;
+
 class Helper
 {
     public static function picture($picture)

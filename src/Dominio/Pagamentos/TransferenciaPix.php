@@ -9,10 +9,6 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class TransferenciaPix implements Pagamento
 {
-    const TELEFONE = '01';
-    const EMAIL = '02';
-    const DOCUMENTO = '03';
-    const CHAVEALEATORIA = '04';
     /**
      * @var Favorecido
      */

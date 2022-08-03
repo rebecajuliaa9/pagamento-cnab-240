@@ -2,21 +2,16 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
-use Leandroferreirama\PagamentoCnab240\Dominio\Conta;
+use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
 
 class Bradesco extends Banco
 {
-    private $numero;
-    private $nome;
     private $codigoArquivo;
     private $codigoConvenio;
     private $pix;
 
     public function __construct($codigoArquivo, Conta $conta, $codigoConvenio, $pix = '')
     {
-        $this->numero = 237;
-        $this->nome = 'BRADESCO';
         parent::__construct($codigoArquivo, $conta);
         $this->codigoArquivo = $codigoArquivo;
         $this->conta = $conta;
@@ -24,21 +19,11 @@ class Bradesco extends Banco
         $this->pix = $pix;
     }
 
-    public function pastaRemessa()
-    {
-        return realpath(dirname(__FILE__)."/../../../configuracoes/Bradesco/remessa");
-    }
-    
-    public function pastaRetorno()
-    {
-        return realpath(dirname(__FILE__)."/../../../configuracoes/Bradesco/retorno");
-    }
-
     public function headerArquivo()
     {
         return[
-            'codigo_banco' => $this->numero,
-            'nome_banco' => $this->nome,
+            'codigo_banco' => $this->numero(),
+            'nome_banco' => $this->nome(),
             'codigo_arquivo' => $this->codigoArquivo,
             'agencia' => $this->conta->agencia,
             'conta' => $this->conta->conta,
@@ -62,6 +47,11 @@ class Bradesco extends Banco
     public function nome()
     {
         return 'BRADESCO';
+    }
+
+    public function pastaBanco()
+    {
+        return 'Bradesco';
     }
 
     public function strPadNumero()

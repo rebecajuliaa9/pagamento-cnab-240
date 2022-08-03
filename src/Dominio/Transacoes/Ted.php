@@ -4,7 +4,6 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\PagamentoTransferencia;
 
 class Ted implements Transacao
 {

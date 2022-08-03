@@ -1,8 +1,8 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
+namespace Leandroferreirama\PagamentoCnab240\Aplicacao;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
+use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
 use Leandroferreirama\PagamentoCnab240\Dominio\Yaml;
 use mikehaertl\tmp\File;
@@ -51,7 +51,7 @@ class GerarArquivo
             $file = new File($this->conteudoArquivo, '.txt');
             $file->delete = false;
         } catch(\Exception $e) {
-            throw new CNAB240PagamentoException("Não foi possível baixar o arquivo.");
+            throw new LeiauteException("Não foi possível baixar o arquivo.");
         }
 
         return $file->getFileName();

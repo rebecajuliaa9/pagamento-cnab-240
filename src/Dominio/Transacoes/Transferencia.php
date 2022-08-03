@@ -2,10 +2,8 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
-use http\Exception\InvalidArgumentException;
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\PagamentoTransferencia;
 
 class Transferencia implements Transacao
 {
