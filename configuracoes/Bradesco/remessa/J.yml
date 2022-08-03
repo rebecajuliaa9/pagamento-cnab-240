@@ -33,7 +33,7 @@ nome_favorecido:
   pos: [62, 91]
   picture: 'X(30)'
   default: ''
-data_vencto:
+data_vencimento:
   pos: [92, 99]
   picture: '9(08)'
   date_format: '%d%m%Y'

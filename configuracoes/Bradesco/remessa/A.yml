@@ -1,0 +1,118 @@
+#baseado na documentação do BANCO BRADESCO
+#REGISTRO DETALHE SEGMENTO A - OBRIGATÓRIO
+#Pagamentos através de cheque, OP, DOC, TED e crédito em conta corrente
+codigo_banco:
+  pos: [1, 3]
+  picture: '9(03)'
+  default: '237'
+codigo_lote:
+  pos: [4, 7]
+  picture: '9(04)'
+  default: ''
+tipo_registro:
+  pos: [8, 8]
+  picture: '9(01)'
+  default: '3'
+numero_registro:
+  pos: [9, 13]
+  picture: '9(05)'
+  default: ''
+segmento:
+  pos: [14, 14]
+  picture: 'X(01)'
+  default: 'A'
+zeros:
+  pos: [15, 17]
+  picture: '9(03)'
+  default: ''
+camara_centralizadora:
+  pos: [18, 20]
+  picture: '9(03)'
+  default: ''
+codigo_banco_favorecido:
+  pos: [21, 23]
+  picture: '9(03)'
+  default: ''
+agencia_favorecido:
+  pos: [24, 28]
+  picture: '9(05)'
+  default: ''
+brancos01:
+  pos: [29, 29]
+  picture: 'X(01)'
+  default: ''
+conta_favorecido:
+  pos: [30, 41]
+  picture: '9(12)'
+  default: ''
+conta_digito_favorecido:
+  pos: [42, 42]
+  picture: 'X(01)'
+  default: ''
+brancos02:
+  pos: [43, 43]
+  picture: 'X(01)'
+  default: ''
+nome_favorecido:
+  pos: [44, 73]
+  picture: 'X(30)'
+  default: ''
+seu_numero:
+  pos: [74, 93]
+  picture: 'X(20)'
+  default: ''
+data_pagamento:
+  pos: [94, 101]
+  picture: '9(08)'
+  default: ''
+tipo_moeda:
+  pos: [102, 104]
+  picture: 'X(03)'
+  default: 'BRL'
+quantidade_moeda:
+  pos: [105, 119]
+  picture: '9(15)'
+  default: ''
+valor_pagamento:
+  pos: [120, 134]
+  picture: '9(15)'
+  default: ''
+nosso_numero:
+  pos: [135,154]
+  picture: 'X(20)'
+  default: ''
+data_real_pagamento:
+  pos: [155, 162]
+  picture: '9(08)'
+  default: ''
+valor_real_pagamento:
+  pos: [163, 177]
+  picture: '9(15)'
+  default: ''
+informacoea:
+  pos: [178, 217]
+  picture: 'X(40)'
+codigo_finalidade_doc:
+  pos: [218, 219]
+  picture: 'X(02)'
+  default: ''
+codigo_finalidade_ted:
+  pos: [220, 224]
+  picture: 'X(05)'
+  default: ''
+tipo_conta:
+  pos: [225,226]
+  picture: 'X(02)'
+  default: ''
+brancos03:
+  pos: [227,229]
+  picture: 'X(03)'
+  default: ''
+zeros2:
+  pos: [230, 230]
+  picture: '9(01)'
+  default: ''
+brancos04:
+  pos: [231,240]
+  picture: 'X(10)'
+  default: ''

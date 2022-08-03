@@ -17,7 +17,7 @@ brancos01:
   pos: [9, 17]
   picture: 'X(09)'
   default: ''
-total_qtd_registros:
+total_qtd_registros_lote:
   pos: [18, 23]
   picture: '9(06)'
   default: ''
@@ -29,7 +29,7 @@ zeros:
   pos: [42, 59]
   picture: '9(18)'
   default: '000000000000000000'
-zeros2:
+zeros02:
   pos: [60, 65]
   picture: '9(6)'
   default: ''

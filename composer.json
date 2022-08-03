@@ -12,5 +12,8 @@
             "email": "suporte@integracaosistema.com.br"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/yaml": "~2.0",
+        "mikehaertl/php-tmpfile": "^1.1"
+    }
 }

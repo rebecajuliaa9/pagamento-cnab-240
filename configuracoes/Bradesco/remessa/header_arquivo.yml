@@ -72,7 +72,7 @@ hora_geracao:
   pos: [152, 157]
   picture: '9(06)'
   default: '115959'
-codigo_lote:
+codigo_arquivo:
   pos: [158, 163]
   picture: '9(06)'
   default: '000000'

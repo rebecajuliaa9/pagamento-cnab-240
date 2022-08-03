@@ -101,9 +101,13 @@ estado:
   pos: [221, 222]
   picture: 'X(02)'
   default: ''
+indicativo_forma_pagamento:
+  pos: [223, 224]
+  picture: '9(02)'
+  default: '01'
 brancos06:
-  pos: [223, 230]
-  picture: 'X(08)'
+  pos: [225, 230]
+  picture: 'X(06)'
   default: ''
 ocorrencias:
   pos: [231, 240]
