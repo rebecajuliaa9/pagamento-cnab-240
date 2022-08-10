@@ -12,9 +12,9 @@ class Conta
 
     public function __construct($agencia, $conta, $contaDv, Empresa $empresa)
     {
-        $this->agencia = $agencia;
-        $this->conta = $conta;
-        $this->contaDv = $contaDv;
+        $this->agencia = filter_var($agencia, FILTER_SANITIZE_NUMBER_INT);
+        $this->conta = filter_var($conta, FILTER_SANITIZE_NUMBER_INT);
+        $this->contaDv = filter_var($contaDv, FILTER_SANITIZE_STRING);
         $this->empresa = $empresa;
     }
 }

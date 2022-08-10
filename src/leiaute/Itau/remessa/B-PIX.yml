@@ -1,0 +1,59 @@
+#baseado na documentação do BANCO BRADESCO
+#REGISTRO DETALHE SEGMENTO B - OBRIGATÓRIO
+#Criada uma categoria exclusiva para o PIX, porque muda o comportantento dos campos: 33 a 226
+codigo_banco:
+  pos: [1, 3]
+  picture: '9(03)'
+  default: '341'
+codigo_lote:
+  pos: [4, 7]
+  picture: '9(04)'
+  default: ''
+tipo_registro:
+  pos: [8, 8]
+  picture: '9(01)'
+  default: '3'
+numero_registro:
+  pos: [9, 13]
+  picture: '9(05)'
+  default: ''
+segmento:
+  pos: [14, 14]
+  picture: 'X(01)'
+  default: 'B'
+forma_iniciacao:
+  pos: [15, 16]
+  picture: 'X(02)'
+  default: ''
+brancos02:
+  pos: [17, 17]
+  picture: 'X(01)'
+  default: ''
+tipo_inscricao_favorecido:
+  pos: [18, 18]
+  picture: '9(01)'
+  default: ''
+numero_inscricao_favorecido:
+  pos: [19, 32]
+  picture: '9(14)'
+  default: ''
+txid:
+  pos: [33, 62]
+  picture: 'X(30)'
+  default: ''
+informacao_11:
+  pos: [63, 127]
+  picture: '9(65)'
+  default: ''
+chave:
+  pos: [128, 227]
+  picture: 'X(100)'
+  default: ''
+brancos01:
+  pos: [228, 230]
+  picture: 'X(03)'
+  default: ''
+ocorrencias:
+  pos: [231, 240]
+  picture: 'X(10)'
+  default: ''

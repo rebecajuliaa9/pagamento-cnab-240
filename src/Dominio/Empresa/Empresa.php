@@ -18,14 +18,14 @@ class Empresa
 
     public function __construct($nome, $inscricao, $rua, $numero, $complemento, $cep, $cidade, $estado)
     {
-        $this->nome = $nome;
-        $this->inscricao = Helper::limpaNumero($inscricao);
-        $this->tipoInscricao = Helper::vericaTipoPessoa($inscricao);
-        $this->rua = $rua;
-        $this->numero = $numero;
-        $this->complemento = $complemento;
-        $this->cep = Helper::limpaNumero($cep);
-        $this->cidade = $cidade;
-        $this->estado = $estado;
+        $this->nome = mb_substr(filter_var($nome, FILTER_SANITIZE_STRING), 0, 30);
+        $this->inscricao = Helper::limpaNumero(filter_var($inscricao, FILTER_SANITIZE_NUMBER_INT));
+        $this->tipoInscricao = Helper::vericaTipoPessoa($this->inscricao);
+        $this->rua = filter_var($rua, FILTER_SANITIZE_STRING);
+        $this->numero = filter_var($numero, FILTER_SANITIZE_STRING);
+        $this->complemento = filter_var($complemento, FILTER_SANITIZE_STRING);
+        $this->cep = Helper::limpaNumero(filter_var($cep, FILTER_SANITIZE_NUMBER_INT));
+        $this->cidade = filter_var($cidade, FILTER_SANITIZE_STRING);
+        $this->estado = filter_var($estado, FILTER_SANITIZE_STRING);
     }
 }

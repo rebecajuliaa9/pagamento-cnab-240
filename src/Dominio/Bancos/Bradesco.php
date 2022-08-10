@@ -6,17 +6,14 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
 
 class Bradesco extends Banco
 {
-    private $codigoArquivo;
     private $codigoConvenio;
     private $pix;
 
     public function __construct($codigoArquivo, Conta $conta, $codigoConvenio, $pix = '')
     {
-        parent::__construct($codigoArquivo, $conta);
-        $this->codigoArquivo = $codigoArquivo;
-        $this->conta = $conta;
-        $this->codigoConvenio = $codigoConvenio;
-        $this->pix = $pix;
+        parent::__construct(filter_var($codigoArquivo, FILTER_SANITIZE_NUMBER_INT), $conta);
+        $this->codigoConvenio = filter_var($codigoConvenio, FILTER_SANITIZE_NUMBER_INT);
+        $this->pix = filter_var($pix, FILTER_SANITIZE_STRING);
     }
 
     public function headerArquivo()
@@ -64,7 +61,7 @@ class Bradesco extends Banco
         return STR_PAD_RIGHT;
     }
 
-    public function recuperarCodigoLote()
+    public function recuperarCodigoArquivo()
     {
         return $this->codigoArquivo;
     }
@@ -72,5 +69,15 @@ class Bradesco extends Banco
     public function recuperarCodigoConvenio()
     {
         return $this->codigoConvenio;
+    }
+
+    public function formaPagamentoMesmoBanco()
+    {
+        return '01';
+    }
+
+    public function formaPagamentoTed()
+    {
+        return '03';
     }
 }

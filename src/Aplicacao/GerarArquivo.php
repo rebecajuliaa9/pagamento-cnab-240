@@ -17,7 +17,7 @@ class GerarArquivo
     private $yaml;
     private $conteudoArquivo;
     private $qtde_registros_arquivo;
-    private $qtde_lotes_arquivo;
+    private $codigo_lote;
     private $numero_registro;
     private $valorTotalPagamento;
     private $qtde_registros_lote;
@@ -28,7 +28,7 @@ class GerarArquivo
         $this->pasta = $banco->pastaRemessa();
         $this->yaml = new Yaml($this->pasta);
         $this->qtde_registros_arquivo = 1;
-        $this->qtde_lotes_arquivo = 0;
+        $this->codigo_lote = 0;
         $this->numero_registro = 0;
     }
 
@@ -66,7 +66,7 @@ class GerarArquivo
             $this->valorTotalPagamento = 0;
             $this->qtde_registros_lote = 1;
             $this->numero_registro = 0;
-            $this->qtde_lotes_arquivo++;
+            $this->codigo_lote++;
             /**
              * Monto o header do lote
              */
@@ -143,7 +143,10 @@ class GerarArquivo
                     $yaml[$key]['value'] = $this->qtde_registros_arquivo;
                 }
                 if($key == 'total_qtd_lotes'){
-                    $yaml[$key]['value'] = $this->qtde_lotes_arquivo;
+                    $yaml[$key]['value'] = $this->codigo_lote;
+                }
+                if($key == 'codigo_lote'){
+                    $yaml[$key]['value'] = $this->codigo_lote;
                 }
                 if($key == 'total_qtd_registros_lote'){
                     $yaml[$key]['value'] = $this->qtde_registros_lote;
@@ -203,7 +206,7 @@ class GerarArquivo
         }
         return str_pad(
             strtr(
-                utf8_decode($valor),
+                utf8_decode(mb_convert_case($valor, MB_CASE_UPPER)),
                 utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),
                 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'
             ),

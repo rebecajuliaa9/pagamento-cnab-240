@@ -26,9 +26,9 @@ class TransferenciaMesmoBanco implements Pagamento
     {
         $this->favorecido = $favorecido;
         $this->conta = $conta;
-        $this->valorPagamento = $valorPagamento;
-        $this->dataPagamento = $dataPagamento;
-        $this->seuNumero = $seuNumero;
+        $this->valorPagamento = filter_var($valorPagamento, FILTER_SANITIZE_STRING);
+        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
+        $this->seuNumero = filter_var($seuNumero, FILTER_SANITIZE_STRING);
     }
 
     public function conteudo(Banco $banco, Transacao $transacao)
@@ -41,7 +41,7 @@ class TransferenciaMesmoBanco implements Pagamento
             throw new InvalidArgumentException('O banco passado não é o mesmo que o banco que fará a transferência! Utilize a opção TED!');
         }
         return [
-            'codigo_lote' => $transacao->codigoLote(),
+            'codigo_lote' => 0,
             'tipo_movimento' => 0,
             'tipo_inscricao_pagador' => $banco->conta->empresa->tipoInscricao,
             'numero_inscricao_pagador' => $banco->conta->empresa->inscricao,

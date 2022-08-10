@@ -112,4 +112,26 @@ class Helper
             return \DateTime::createFromFormat('Y-m-d', $date)->format('dmY');
         }
     }
+
+    public static function calculoDAC($calculoDAC)
+    {
+        /**
+         * Neste cálculo do dac é recebido 43 números, ou seja, a partir do código de barras de 44 número (tirando todos os dígitos), retira ainda o 4 dígito
+         */
+        $total = 0;
+        $fator = 2;
+        for($i=0; $i < strlen($calculoDAC); $i++) {
+            if($fator == 10){
+                $fator = 2;
+            }
+            $total += $calculoDAC[$i]*$fator;
+            $fator++;
+        }
+        $resto = $total%11;
+        $dac = 11-$resto;
+        if($dac == 0 || $dac > 9){
+            $dac = 1;
+        }
+        return $dac;
+    }
 }

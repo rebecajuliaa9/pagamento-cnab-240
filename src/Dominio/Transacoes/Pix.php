@@ -4,6 +4,7 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaPix;
 
 class Pix implements Transacao
 {
@@ -24,9 +25,9 @@ class Pix implements Transacao
         ];
     }
 
-    public function adicionar(Pagamento $pagamento)
+    public function adicionar(TransferenciaPix $pix)
     {
-        array_push($this->conteudo, $pagamento);
+        array_push($this->conteudo, $pix);
         return $this;
     }
 
@@ -36,9 +37,13 @@ class Pix implements Transacao
          * forma_pagamento: 45 Pix transferência
          */
         $empresa = $banco->conta->empresa;
-        return [
-            'layout_lote' => '045',
-            'codigo_lote' => $this->codigoLote,
+        $headeLote = [];
+        if (method_exists($banco, "recuperarCodigoConvenio")) {
+            $headeLote = $headeLote + ['codigo_convenio' => $banco->recuperarCodigoConvenio()];
+        }
+        $headeLote = $headeLote + [
+            'layout_lote' => '040',
+            'codigo_lote' => '0',
             'inscricao_numero' => $empresa->inscricao,
             'empresa_inscricao' => $empresa->tipoInscricao,
             'agencia' => $banco->conta->agencia,
@@ -51,12 +56,12 @@ class Pix implements Transacao
             'cep' => $empresa->cep,
             'cidade' => $empresa->cidade,
             'estado' => $empresa->estado,
-            'codigo_convenio' => $banco->recuperarCodigoConvenio(),
             'tipo_pagamento' => 20,
             'forma_pagamento' => 45,
             'total_qtd_registros'=> 0,
             'total_valor_pagtos' => 0
         ];
+        return $headeLote;
     }
 
     public function trailerLote(Banco $banco)

@@ -8,7 +8,7 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 abstract class Banco
 {
-    private $codigoArquivo;
+    protected $codigoArquivo;
     private $lotes;
     /**
      * @var Conta
@@ -18,7 +18,7 @@ abstract class Banco
     public function __construct($codigoArquivo, Conta $conta)
     {
 
-        $this->codigoArquivo = $codigoArquivo;
+        $this->codigoArquivo = filter_var($codigoArquivo, FILTER_SANITIZE_NUMBER_INT);
         $this->lotes = [];
         $this->conta = $conta;
     }
@@ -64,5 +64,7 @@ abstract class Banco
     abstract public function headerArquivo();
     abstract public function strPadNumero();
     abstract public function strPadTexto();
-    abstract public function recuperarCodigoLote();
+    abstract public function recuperarCodigoArquivo();
+    abstract public function formaPagamentoMesmoBanco();
+    abstract public function formaPagamentoTed();
 }

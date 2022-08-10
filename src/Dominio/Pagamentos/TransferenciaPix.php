@@ -2,6 +2,7 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos;
 
+use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\TipoChave;
 use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
@@ -21,10 +22,17 @@ class TransferenciaPix implements Pagamento
     public function __construct(Favorecido $favorecido, $valorPagamento, $dataPagamento, $seuNumero, $tipoChave, $chave)
     {
         $this->favorecido = $favorecido;
-        $this->valorPagamento = $valorPagamento;
-        $this->dataPagamento = $dataPagamento;
-        $this->seuNumero = $seuNumero;
-        $this->tipoChave = $tipoChave;
+        $this->valorPagamento = filter_var($valorPagamento, FILTER_SANITIZE_STRING);
+        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
+        $this->seuNumero = filter_var($seuNumero, FILTER_SANITIZE_STRING);
+        $this->tipoChave = filter_var($tipoChave, FILTER_SANITIZE_STRING);
+        $chave = filter_var($chave, FILTER_SANITIZE_STRING);
+        if($this->tipoChave == TipoChave::TELEFONE){
+            $chaveNumeros = preg_replace('/[^0-9]/', "", $chave);
+            //incluo o + em frente
+            $chave = '+'.filter_var($chaveNumeros, FILTER_SANITIZE_NUMBER_INT);
+        }
+
         $this->chave = $chave;
     }
 
@@ -40,7 +48,7 @@ class TransferenciaPix implements Pagamento
          */
         $camara_centralizadora = '009';
         return [
-            'codigo_lote' => $transacao->codigoLote(),
+            'codigo_lote' => 0,
             'tipo_movimento' => 0,
             'camara_centralizadora' => $camara_centralizadora,
             'tipo_inscricao_pagador' => $banco->conta->empresa->tipoInscricao,

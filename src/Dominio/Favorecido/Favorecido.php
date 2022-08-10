@@ -25,8 +25,8 @@ class Favorecido
      */
     public function __construct($nome, $inscricao)
     {
-        $this->nome = $nome;
-        $this->inscricao = Helper::limpaNumero($inscricao);
-        $this->tipoInscricao = Helper::vericaTipoPessoa($inscricao);
+        $this->nome = mb_substr(filter_var($nome, FILTER_SANITIZE_STRING), 0, 30);
+        $this->inscricao = Helper::limpaNumero(filter_var($inscricao, FILTER_SANITIZE_NUMBER_INT));
+        $this->tipoInscricao = Helper::vericaTipoPessoa($this->inscricao);
     }
 }

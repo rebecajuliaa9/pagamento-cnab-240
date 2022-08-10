@@ -26,9 +26,9 @@ class TransferenciaTed implements Pagamento
     {
         $this->favorecido = $favorecido;
         $this->conta = $conta;
-        $this->valorPagamento = $valorPagamento;
-        $this->dataPagamento = $dataPagamento;
-        $this->seuNumero = $seuNumero;
+        $this->valorPagamento = filter_var($valorPagamento, FILTER_SANITIZE_STRING);
+        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
+        $this->seuNumero = filter_var($seuNumero, FILTER_SANITIZE_STRING);
     }
 
     public function conteudo(Banco $banco, Transacao $transacao)
@@ -46,7 +46,7 @@ class TransferenciaTed implements Pagamento
         $camara_centralizadora = '018';
 
         return [
-            'codigo_lote' => $transacao->codigoLote(),
+            'codigo_lote' => 0,
             'tipo_movimento' => 0,
             'camara_centralizadora' => $camara_centralizadora,
             'tipo_inscricao_pagador' => $banco->conta->empresa->tipoInscricao,

@@ -1,0 +1,143 @@
+#baseado na documentação do BANCO ITAÚ S/A
+#REGISTRO DETALHE SEGMENTO A - OBRIGATÓRIO
+#Pagamentos através de cheque, OP, DOC, TED e crédito em conta corrente
+codigo_banco:
+  pos: [1, 3]
+  picture: '9(03)'
+  default: '341'
+codigo_lote:
+  pos: [4, 7]
+  picture: '9(04)'
+  default: ''
+tipo_registro:
+  pos: [8, 8]
+  picture: '9(01)'
+  default: '3'
+numero_registro:
+  pos: [9, 13]
+  picture: '9(05)'
+  default: ''
+segmento:
+  pos: [14, 14]
+  picture: 'X(01)'
+  default: 'A'
+tipo_movimento:
+  pos: [15, 17]
+  picture: '9(03)'
+  default: ''
+camara_centralizadora:
+  pos: [18, 20]
+  picture: '9(03)'
+  default: ''
+codigo_banco_favorecido:
+  pos: [21, 23]
+  picture: '9(03)'
+  default: ''
+zeros:
+  pos: [24, 24]
+  picture: '9(01)'
+  default: ''
+agencia_favorecido:
+  pos: [25, 28]
+  picture: '9(04)'
+  default: ''
+brancos02:
+  pos: [29, 29]
+  picture: 'X(01)'
+  default: ''
+zeros3:
+  pos: [30, 35]
+  picture: '9(06)'
+  default: ''
+conta_favorecido:
+  pos: [36, 41]
+  picture: '9(06)'
+  default: ''
+brancos04:
+  pos: [42, 42]
+  picture: 'X(01)'
+  default: ''
+conta_digito_favorecido:
+  pos: [43, 43]
+  picture: '9(01)'
+  default: ''
+nome_favorecido:
+  pos: [44, 73]
+  picture: 'X(30)'
+  default: ''
+seu_numero:
+  pos: [74, 93]
+  picture: 'X(20)'
+  default: ''
+data_pagamento:
+  pos: [94, 101]
+  picture: '9(08)'
+  date_format: '%d%m%Y'
+moeda_tipo:
+  pos: [102, 104]
+  picture: 'X(03)'
+  default: 'REA'
+codigo_ispb:
+  pos: [105, 112]
+  picture: 'X(08)'
+  default: '00000000'
+identificacao_transferencia:
+  pos: [113, 114]
+  picture: 'X(02)'
+  default: '04'
+zeros2:
+  pos: [115, 119]
+  picture: '9(05)'
+  default: ''
+valor_pagamento:
+  pos: [120, 134]
+  picture: '9(15)'
+  default: ''
+nosso_numero:
+  pos: [135, 149]
+  picture: 'X(15)'
+  default: ''
+brancos01:
+  pos: [150, 154]
+  picture: 'X(05)'
+  default: ''
+data_efetiva:
+  pos: [155, 162]
+  picture: '9(08)'
+  date_format: '%d%m%Y'
+valor_efetivo:
+  pos: [163, 177]
+  picture: '9(15)'
+  default: ''
+finalidade_detalhe:
+  pos: [178, 197]
+  picture: 'X(20)'
+  default: ''
+numero_documento:
+  pos: [198, 203]
+  picture: '9(06)'
+  date_format: ''
+numero_inscricao_favorecido:
+  pos: [204, 217]
+  picture: '9(14)'
+  default: ''
+finalidade_doc:
+  pos: [218, 219]
+  picture: 'X(02)'
+  default: ''
+finalidade_ted:
+  pos: [220, 224]
+  picture: 'X(05)'
+  default: ''
+brancos03:
+  pos: [225, 229]
+  picture: 'X(05)'
+  default: ''
+aviso:
+  pos: [230, 230]
+  picture: 'X(01)'
+  default: '0'
+ocorrencias:
+  pos: [231, 240]
+  picture: 'X(10)'
+  default: ''

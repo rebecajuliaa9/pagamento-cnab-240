@@ -8,6 +8,7 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Empresa;
 use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
 use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\FavorecidoConta;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\PagamentoBoleto;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\PagamentoBoletoBradesco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaMesmoBanco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaPix;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaTed;
@@ -18,9 +19,9 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transferencia;
 
 require '../vendor/autoload.php';
 
-$codigoArquivo = 45;
-$codigoLote = 60;
-$seuNumero = 15;
+$codigoArquivo = 46;
+$codigoLote = 1;
+$seuNumero = 17;
 /**
  * EXEMPLO PIX
  */
@@ -36,22 +37,24 @@ echo $bradesco->gerarArquivo();*/
  */
 $favorecido = new Favorecido('Leandro Ferreira Marcelli', '035.976.079-18');
 $contaFavorecido = new FavorecidoConta(237, TipoConta::CONTACORRENTE, 3127, 11470, 7);
-$mesmoBanco = new TransferenciaMesmoBanco($favorecido, $contaFavorecido, 150, '2022-08-03', 5);
+$mesmoBanco = new TransferenciaMesmoBanco($favorecido, $contaFavorecido, 150, date("Y-m-d"), $seuNumero);
 
 $transferencia = new Transferencia($codigoLote);
 $transferencia->adicionar($mesmoBanco);
+$seuNumero++;
 $codigoLote++;
 
 
 $contaFavorecido2 = new FavorecidoConta(260, 'CC',0001,69717119, 8);
-$pagamentoTed = new TransferenciaTed($favorecido, $contaFavorecido2, 188.3, '2022-08-03', 6);
+$pagamentoTed = new TransferenciaTed($favorecido, $contaFavorecido2, 188.3, date("Y-m-d"), $seuNumero);
 $ted = new Ted($codigoLote);
 $ted->adicionar($pagamentoTed);
+$seuNumero++;
 $codigoLote++;
 
 $favorecidoBoleto = new Favorecido('Brl Eventos', '20.136.193/0001-10');
 $codigoBarras = '34191.09008 34203.630768 21217.130000 5 91190000013775';
-$pagamento = new PagamentoBoleto($codigoBarras, $favorecidoBoleto, '137,75', '03/08/2022',7);
+$pagamento = new PagamentoBoletoBradesco($codigoBarras, $favorecidoBoleto, '137,75', date("Y-m-d"),$seuNumero);
 $boleto = new Boleto($codigoLote);
 $boleto->adicionar($pagamento);
 $codigoLote++;
@@ -91,6 +94,8 @@ $pix5->adicionar($pagamentoPix);
 
 $empresa = new Empresa('Oliveira Formaturas', '13.676.094/0001-65', 'David Geronasso', '587', '', '82540-150', 'Curitiba', 'PR');
 $conta = new Conta(3127, 7797, 6, $empresa);
-$bradesco = new Bradesco($codigoArquivo, $conta, 393678, 'PIX');
-$bradesco->adicionar($pix)->adicionar($pix2)->adicionar($pix3)->adicionar($pix4)->adicionar($pix5);
+$bradesco = new Bradesco($codigoArquivo, $conta, 393678);
+//$bradesco->adicionar($pix)->adicionar($pix2)->adicionar($pix3)->adicionar($pix4)->adicionar($pix5);
+$bradesco->adicionar($transferencia)->adicionar($ted);
+//$bradesco->adicionar($boleto);
 echo $bradesco->gerarArquivo();
