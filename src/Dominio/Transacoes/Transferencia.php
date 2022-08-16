@@ -8,15 +8,22 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaMesmoBanc
 
 class Transferencia implements Transacao
 {
+    /**
+     * @var array
+     */
     private $conteudo;
-    private $codigoLote;
 
-    public function __construct($codigoLote)
+    /**
+     *
+     */
+    public function __construct()
     {
         $this->conteudo = [];
-        $this->codigoLote = $codigoLote;
     }
 
+    /**
+     * @return string[]
+     */
     public function segmentos()
     {
         return [
@@ -25,12 +32,20 @@ class Transferencia implements Transacao
         ];
     }
 
+    /**
+     * @param TransferenciaMesmoBanco $transferencia
+     * @return $this
+     */
     public function adicionar(TransferenciaMesmoBanco $transferencia)
     {
         array_push($this->conteudo, $transferencia);
         return $this;
     }
 
+    /**
+     * @param Banco $banco
+     * @return array
+     */
     public function headerLote(Banco $banco)
     {
         /**
@@ -70,21 +85,24 @@ class Transferencia implements Transacao
         return $headeLote;
     }
 
+    /**
+     * @param Banco $banco
+     * @return int[]
+     */
     public function trailerLote(Banco $banco)
     {
         return [
-            'codigo_lote' => $this->codigoLote,
+            'codigo_lote' => 0,
             'total_qtd_registros_lote' => 0,
             'total_valor_pagtos' => 0
         ];
     }
+
+    /**
+     * @return array
+     */
     public function recuperarConteudo()
     {
         return $this->conteudo;
-    }
-
-    public function codigoLote()
-    {
-        return $this->codigoLote;
     }
 }

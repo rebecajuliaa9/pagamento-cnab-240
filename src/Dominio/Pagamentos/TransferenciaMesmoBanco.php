@@ -19,18 +19,43 @@ class TransferenciaMesmoBanco implements Pagamento
      * @var FavorecidoConta
      */
     private $conta;
+    /**
+     * @var mixed
+     */
     private $dataPagamento;
+    /**
+     * @var mixed
+     */
     private $seuNumero;
 
-    public function __construct(Favorecido $favorecido, FavorecidoConta $conta, $valorPagamento, $dataPagamento, $seuNumero)
+    /**
+     * @param Favorecido $favorecido
+     * @param FavorecidoConta $conta
+     * @param $valorPagamento
+     * @param $dataPagamento
+     * @param $seuNumero
+     */
+    public function __construct(Favorecido $favorecido, FavorecidoConta $conta, $valorPagamento, $seuNumero, $dataPagamento = null)
     {
         $this->favorecido = $favorecido;
         $this->conta = $conta;
         $this->valorPagamento = filter_var($valorPagamento, FILTER_SANITIZE_STRING);
-        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
         $this->seuNumero = filter_var($seuNumero, FILTER_SANITIZE_STRING);
+        $this->setDataPagamento($dataPagamento);
     }
 
+    private function setDataPagamento($dataPagamento)
+    {
+        if(is_null($dataPagamento)){
+            $dataPagamento = date("Y-m-d");
+        }
+        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
+    }
+    /**
+     * @param Banco $banco
+     * @param Transacao $transacao
+     * @return array
+     */
     public function conteudo(Banco $banco, Transacao $transacao)
     {
         /**

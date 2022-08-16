@@ -4,12 +4,34 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Favorecido;
 
 class FavorecidoConta
 {
+    /**
+     * @var mixed
+     */
     public $tipoConta;
+    /**
+     * @var mixed
+     */
     public $agencia;
+    /**
+     * @var mixed
+     */
     public $conta;
+    /**
+     * @var mixed
+     */
     public $conta_digito;
+    /**
+     * @var mixed
+     */
     public $codigoBanco;
 
+    /**
+     * @param $codigoBanco
+     * @param $tipoConta
+     * @param $agencia
+     * @param $conta
+     * @param $conta_digito
+     */
     public function __construct($codigoBanco, $tipoConta, $agencia, $conta, $conta_digito)
     {
         $this->tipoConta = filter_var($tipoConta, FILTER_SANITIZE_STRING);

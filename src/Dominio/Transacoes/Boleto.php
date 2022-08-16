@@ -3,20 +3,26 @@
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\PagamentoBoleto;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto\PagamentoBoleto;
 
 class Boleto implements Transacao
 {
+    /**
+     * @var array
+     */
     private $conteudo;
-    private $codigoLote;
 
-    public function __construct($codigoLote)
+    /**
+     *
+     */
+    public function __construct()
     {
         $this->conteudo = [];
-        $this->codigoLote = $codigoLote;
     }
 
+    /**
+     * @return string[]
+     */
     public function segmentos()
     {
         return [
@@ -25,12 +31,20 @@ class Boleto implements Transacao
         ];
     }
 
+    /**
+     * @param PagamentoBoleto $pagamentoBoleto
+     * @return $this
+     */
     public function adicionar(PagamentoBoleto $pagamentoBoleto)
     {
         array_push($this->conteudo, $pagamentoBoleto);
         return $this;
     }
 
+    /**
+     * @param Banco $banco
+     * @return array
+     */
     public function headerLote(Banco $banco)
     {
         /**
@@ -67,22 +81,24 @@ class Boleto implements Transacao
         return $headeLote;
     }
 
+    /**
+     * @param Banco $banco
+     * @return int[]
+     */
     public function trailerLote(Banco $banco)
     {
         return [
-            'codigo_lote' => $this->codigoLote,
+            'codigo_lote' => 0,
             'total_qtd_registros_lote' => 0,
             'total_valor_pagtos' => 0
         ];
     }
 
+    /**
+     * @return array
+     */
     public function recuperarConteudo()
     {
         return $this->conteudo;
-    }
-
-    public function codigoLote()
-    {
-        return $this->codigoLote;
     }
 }

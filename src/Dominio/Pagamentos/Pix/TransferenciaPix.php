@@ -1,11 +1,11 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos;
+namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pix;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\TipoChave;
 use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
 use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class TransferenciaPix implements Pagamento
@@ -14,28 +14,53 @@ class TransferenciaPix implements Pagamento
      * @var Favorecido
      */
     private $favorecido;
+    /**
+     * @var mixed
+     */
     private $dataPagamento;
+    /**
+     * @var mixed
+     */
     private $seuNumero;
-    private $tipoChave;
-    private $chave;
 
-    public function __construct(Favorecido $favorecido, $valorPagamento, $dataPagamento, $seuNumero, $tipoChave, $chave)
+    /**
+     * @var Pix
+     */
+    private $pix;
+    /**
+     * @param Favorecido $favorecido
+     * @param $valorPagamento
+     * @param $dataPagamento
+     * @param $seuNumero
+     * @param $tipoChave
+     * @param $chave
+     */
+    public function __construct(Favorecido $favorecido, Pix $pix, $valorPagamento, $seuNumero, $dataPagamento = null)
     {
         $this->favorecido = $favorecido;
+        $this->pix = $pix;
         $this->valorPagamento = filter_var($valorPagamento, FILTER_SANITIZE_STRING);
-        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
         $this->seuNumero = filter_var($seuNumero, FILTER_SANITIZE_STRING);
-        $this->tipoChave = filter_var($tipoChave, FILTER_SANITIZE_STRING);
-        $chave = filter_var($chave, FILTER_SANITIZE_STRING);
-        if($this->tipoChave == TipoChave::TELEFONE){
-            $chaveNumeros = preg_replace('/[^0-9]/', "", $chave);
-            //incluo o + em frente
-            $chave = '+'.filter_var($chaveNumeros, FILTER_SANITIZE_NUMBER_INT);
-        }
-
-        $this->chave = $chave;
+        $this->setDataPagamento($dataPagamento);
     }
 
+    /**
+     * @param $dataPagamento
+     * @return void
+     */
+    private function setDataPagamento($dataPagamento)
+    {
+        if(is_null($dataPagamento)){
+            $dataPagamento = date("Y-m-d");
+        }
+        $this->dataPagamento = filter_var($dataPagamento, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * @param Banco $banco
+     * @param Transacao $transacao
+     * @return array
+     */
     public function conteudo(Banco $banco, Transacao $transacao)
     {
         /** numero_registro: Obrigatório passar valor zero, o valor é calculado automaticamente
@@ -61,8 +86,8 @@ class TransferenciaPix implements Pagamento
             'valor_pagamento' => Helper::valorParaNumero($this->valorPagamento),
             'data_pagamento' => Helper::formataDataParaRemessa($this->dataPagamento),
             'seu_numero' => $this->seuNumero,
-            'forma_iniciacao' => $this->tipoChave,
-            'chave' => $this->chave
+            'forma_iniciacao' => $this->pix->getTipoChave(),
+            'chave' => $this->pix->getChave()
         ];
     }
 }

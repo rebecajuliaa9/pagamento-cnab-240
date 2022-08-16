@@ -4,28 +4,47 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
 
+/**
+ * Classe responsável por gerar um arquivo no banco Itaú
+ */
 class Itau extends Banco
 {
+    /**
+     * @param $codigoArquivo
+     * @param Conta $conta
+     */
     public function __construct($codigoArquivo, Conta $conta)
     {
         parent::__construct($codigoArquivo, $conta);
     }
 
+    /**
+     * @return string
+     */
     public function numero()
     {
         return '341';
     }
 
+    /**
+     * @return string
+     */
     public function nome()
     {
         return 'Banco Itau';
     }
 
+    /**
+     * @return string
+     */
     public function pastaBanco()
     {
         return 'itau';
     }
 
+    /**
+     * @return array
+     */
     public function headerArquivo()
     {
         return[
@@ -44,26 +63,41 @@ class Itau extends Banco
         ];
     }
 
+    /**
+     * @return int
+     */
     public function strPadNumero()
     {
         return STR_PAD_LEFT;
     }
 
+    /**
+     * @return int
+     */
     public function strPadTexto()
     {
         return STR_PAD_RIGHT;
     }
 
+    /**
+     * @return mixed
+     */
     public function recuperarCodigoArquivo()
     {
         return $this->codigoArquivo;
     }
 
+    /**
+     * @return string
+     */
     public function formaPagamentoMesmoBanco()
     {
         return '01';
     }
 
+    /**
+     * @return string
+     */
     public function formaPagamentoTed()
     {
         return '41';

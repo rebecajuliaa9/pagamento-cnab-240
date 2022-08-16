@@ -4,19 +4,59 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Empresa;
 
 use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
 
+/**
+ * Classe responsável pela geração dos dados da empresa que deve ser instanciado nas classes derivadas do banco
+ */
 class Empresa
 {
+    /**
+     * @var string
+     */
     public $nome;
+    /**
+     * @var array|string|string[]|null
+     */
     public $inscricao;
+    /**
+     * @var mixed
+     */
     public $rua;
+    /**
+     * @var mixed
+     */
     public $numero;
+    /**
+     * @var mixed
+     */
     public $complemento;
+    /**
+     * @var array|string|string[]|null
+     */
     public $cep;
+    /**
+     * @var mixed
+     */
     public $cidade;
+    /**
+     * @var mixed
+     */
     public $estado;
+    /**
+     * @var int
+     */
     public $tipoInscricao;
 
-    public function __construct($nome, $inscricao, $rua, $numero, $complemento, $cep, $cidade, $estado)
+    /**
+     * @param $nome
+     * @param $inscricao
+     * @param $rua
+     * @param $numero
+     * @param $complemento
+     * @param $cep
+     * @param $cidade
+     * @param $estado
+     */
+    public function __construct($nome, $inscricao, $rua = NULL, $numero = NULL, $complemento = NULL, $cep = NULL, $cidade = NULL, $estado = NULL)
     {
         $this->nome = mb_substr(filter_var($nome, FILTER_SANITIZE_STRING), 0, 30);
         $this->inscricao = Helper::limpaNumero(filter_var($inscricao, FILTER_SANITIZE_NUMBER_INT));

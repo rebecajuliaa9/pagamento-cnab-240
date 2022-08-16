@@ -3,20 +3,26 @@
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaTed;
 
 class Ted implements Transacao
 {
+    /**
+     * @var array
+     */
     private $conteudo;
-    private $codigoLote;
 
-    public function __construct($codigoLote)
+    /**
+     *
+     */
+    public function __construct()
     {
         $this->conteudo = [];
-        $this->codigoLote = $codigoLote;
     }
 
+    /**
+     * @return string[]
+     */
     public function segmentos()
     {
         return [
@@ -25,12 +31,20 @@ class Ted implements Transacao
         ];
     }
 
+    /**
+     * @param TransferenciaTed $ted
+     * @return $this
+     */
     public function adicionar(TransferenciaTed $ted)
     {
         array_push($this->conteudo, $ted);
         return $this;
     }
 
+    /**
+     * @param Banco $banco
+     * @return array
+     */
     public function headerLote(Banco $banco)
     {
         /**
@@ -67,21 +81,24 @@ class Ted implements Transacao
         return $headeLote;
     }
 
+    /**
+     * @param Banco $banco
+     * @return int[]
+     */
     public function trailerLote(Banco $banco)
     {
         return [
-            'codigo_lote' => $this->codigoLote,
+            'codigo_lote' => 0,
             'total_qtd_registros_lote' => 0,
             'total_valor_pagtos' => 0
         ];
     }
+
+    /**
+     * @return array
+     */
     public function recuperarConteudo()
     {
         return $this->conteudo;
-    }
-
-    public function codigoLote()
-    {
-        return $this->codigoLote;
     }
 }

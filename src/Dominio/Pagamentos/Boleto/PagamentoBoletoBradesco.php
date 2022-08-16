@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos;
+namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto;
 
 use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
@@ -8,6 +8,11 @@ use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class PagamentoBoletoBradesco extends PagamentoBoleto
 {
+    /**
+     * @param Banco $banco
+     * @param Transacao $transacao
+     * @return array
+     */
     public function conteudo(Banco $banco, Transacao $transacao)
     {
         $arrayCodigoBarras = Helper::desconstrutorCodigoBarras($this->codigoBarras);

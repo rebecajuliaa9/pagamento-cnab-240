@@ -10,8 +10,14 @@ use \Symfony\Component\Yaml\Yaml as YamlSymfony;
 
 class Yaml extends YamlSymfony
 {
+    /**
+     * @var
+     */
     private $pasta;
 
+    /**
+     * @param $pasta
+     */
     public function __construct($pasta)
     {
         $this->pasta = $pasta;
@@ -31,6 +37,10 @@ class Yaml extends YamlSymfony
         return $this->validaInformacoes('header do arquivo', $this->parse(file_get_contents($arquivo)));
     }
 
+    /**
+     * @return mixed
+     * @throws YamlException
+     */
     public function headerLote()
     {
         $arquivo = "{$this->pasta}/header_lote.yml";
@@ -42,6 +52,12 @@ class Yaml extends YamlSymfony
         return $this->validaInformacoes('header do lote', $this->parse(file_get_contents($arquivo)));
     }
 
+    /**
+     * @param Transacao $transacao
+     * @return array
+     * @throws LeiauteException
+     * @throws YamlException
+     */
     public function detalhe(Transacao $transacao){
         if(empty($transacao->segmentos())){
             throw new LeiauteException('Não localizei o tipo de detalhe para a transação selecionada');
@@ -59,6 +75,10 @@ class Yaml extends YamlSymfony
         return $detalhes;
     }
 
+    /**
+     * @return mixed
+     * @throws YamlException
+     */
     public function trailerArquivo()
     {
         $arquivo = "{$this->pasta}/trailer_arquivo.yml";
@@ -70,6 +90,10 @@ class Yaml extends YamlSymfony
         return $this->validaInformacoes('trailer do arquivo', $this->parse(file_get_contents($arquivo)));
     }
 
+    /**
+     * @return mixed
+     * @throws YamlException
+     */
     public function trailerLote()
     {
         $arquivo = "{$this->pasta}/trailer_lote.yml";
@@ -81,15 +105,28 @@ class Yaml extends YamlSymfony
         return $this->validaInformacoes('trailer do lote', $this->parse(file_get_contents($arquivo)));
     }
 
+    /**
+     * @param $segmento
+     * @param $arquivo
+     * @return mixed
+     * @throws YamlException
+     */
     public function lerAquivo($segmento, $arquivo)
     {
         $nomeArquivo = $this->pasta . '/' . $arquivo;
         if (!file_exists($nomeArquivo)){
-            throw new HeaderYamlException("Arquivo de configuração {$segmento}.yml não encontrado em: $this->path");
+            throw new YamlException("Arquivo de configuração {$segmento}.yml não encontrado em: $this->pasta");
         }
         return $this->validaInformacoes($segmento, $this->parse(file_get_contents($nomeArquivo)));
     }
 
+    /**
+     * @param $metodo
+     * @param $campos
+     * @return mixed
+     * @throws LeiauteException
+     * @throws YamlException
+     */
     public function validaInformacoes($metodo, $campos)
     {
         if (empty($campos)) {
@@ -101,6 +138,11 @@ class Yaml extends YamlSymfony
         return $campos;
     }
 
+    /**
+     * @param $campos
+     * @return void
+     * @throws LeiauteException
+     */
     public function validaArquivo($campos)
     {
         foreach ($campos as $nome => $campo) {

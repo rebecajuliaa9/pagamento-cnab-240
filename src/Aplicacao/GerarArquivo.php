@@ -21,6 +21,7 @@ class GerarArquivo
     private $numero_registro;
     private $valorTotalPagamento;
     private $qtde_registros_lote;
+    private $codigoArquivo;
 
     public function __construct(Banco $banco)
     {
@@ -30,9 +31,10 @@ class GerarArquivo
         $this->qtde_registros_arquivo = 1;
         $this->codigo_lote = 0;
         $this->numero_registro = 0;
+        $this->codigoArquivo = $banco->recuperarCodigoArquivo();
     }
 
-    public function gerar()
+    public function gerar($retorno)
     {
         /**
          * Gero o Header do Arquivo
@@ -49,12 +51,20 @@ class GerarArquivo
         $this->gerarConteudo('Trailer do Arquivo', 'trailer_arquivo', $this->banco->trailerArquivo());
         try {
             $file = new File($this->conteudoArquivo, '.txt');
-            $file->delete = false;
+
         } catch(\Exception $e) {
             throw new LeiauteException("Não foi possível baixar o arquivo.");
         }
-
-        return $file->getFileName();
+        if($retorno === 1){
+            $this->downloadArquivo($file->getFileName());
+            $file->delete = true;
+            return;
+        }
+        if($retorno === 2){
+            $file->delete = false;
+            return $file->getFileName();
+        }
+        throw new \InvalidArgumentException('Não foi informado o tipo de retorno corretamente!');
     }
 
     public function gerarLote()
@@ -214,5 +224,21 @@ class GerarArquivo
             " ",
             $this->banco->strPadTexto()
         );
+    }
+
+    private function downloadArquivo($caminho)
+    {
+        $arquivo = 'pg'.str_pad($this->codigoArquivo, 6, 0, STR_PAD_LEFT).'.txt';
+        header('Content-Description: File Transfer');
+        header('Content-Disposition: attachment; filename="'.$arquivo.'"');
+        header('Content-Type: application/octet-stream');
+        header('Content-Transfer-Encoding: binary');
+        header('Content-Length: ' . filesize($caminho));
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Expires: 0');
+        // Envia o arquivo para o cliente
+        readfile($caminho);
+
     }
 }
