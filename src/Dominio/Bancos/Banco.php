@@ -2,6 +2,7 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
 
+use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\Arquivo;
 use Leandroferreirama\PagamentoCnab240\Aplicacao\GerarArquivo;
 use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
 use Leandroferreirama\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
@@ -47,6 +48,7 @@ abstract class Banco
     /**
      * @return string
      * @throws LeiauteException
+     * @param $retorno
      */
     public function gerarArquivo($retorno)
     {
