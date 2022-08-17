@@ -4,9 +4,9 @@ namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaPix;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaMesmoBanco;
 
-class Pix implements Transacao
+class LoteTransferencia implements Transacao
 {
     /**
      * @var array
@@ -28,17 +28,17 @@ class Pix implements Transacao
     {
         return [
             'A',
-            'B-PIX'
+            'B'
         ];
     }
 
     /**
-     * @param TransferenciaPix $pix
+     * @param TransferenciaMesmoBanco $transferencia
      * @return $this
      */
-    public function adicionar(TransferenciaPix $pix)
+    public function adicionar(TransferenciaMesmoBanco $transferencia)
     {
-        array_push($this->conteudo, $pix);
+        array_push($this->conteudo, $transferencia);
         return $this;
     }
 
@@ -49,15 +49,20 @@ class Pix implements Transacao
     public function headerLote(Banco $banco)
     {
         /**
-         * forma_pagamento: 45 Pix transferência
+         * tipo_pagamento = 20 - Pagamento Fornecedor
          */
         $empresa = $banco->conta->empresa;
+
         $headeLote = [];
+        /**
+         * Somente o bradesco possui esse método
+         */
         if (method_exists($banco, "recuperarCodigoConvenio")) {
             $headeLote = $headeLote + ['codigo_convenio' => $banco->recuperarCodigoConvenio()];
         }
+
         $headeLote = $headeLote + [
-            'layout_lote' => '040',
+            'layout_lote' => '045',
             'codigo_lote' => '0',
             'inscricao_numero' => $empresa->inscricao,
             'empresa_inscricao' => $empresa->tipoInscricao,
@@ -72,10 +77,11 @@ class Pix implements Transacao
             'cidade' => $empresa->cidade,
             'estado' => $empresa->estado,
             'tipo_pagamento' => 20,
-            'forma_pagamento' => 45,
+            'forma_pagamento' => $banco->formaPagamentoMesmoBanco(),
             'total_qtd_registros'=> 0,
             'total_valor_pagtos' => 0
         ];
+
         return $headeLote;
     }
 

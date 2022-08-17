@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "symfony/yaml": "~2.0",
+        "symfony/yaml": "^2.0",
         "mikehaertl/php-tmpfile": "^1.1",
         "ext-mbstring": "*"
     }

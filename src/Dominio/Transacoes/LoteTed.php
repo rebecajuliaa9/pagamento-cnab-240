@@ -3,9 +3,9 @@
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto\PagamentoBoleto;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaTed;
 
-class Boleto implements Transacao
+class LoteTed implements Transacao
 {
     /**
      * @var array
@@ -26,18 +26,18 @@ class Boleto implements Transacao
     public function segmentos()
     {
         return [
-            'J',
-            'J52'
+            'A',
+            'B'
         ];
     }
 
     /**
-     * @param PagamentoBoleto $pagamentoBoleto
+     * @param TransferenciaTed $ted
      * @return $this
      */
-    public function adicionar(PagamentoBoleto $pagamentoBoleto)
+    public function adicionar(TransferenciaTed $ted)
     {
-        array_push($this->conteudo, $pagamentoBoleto);
+        array_push($this->conteudo, $ted);
         return $this;
     }
 
@@ -59,7 +59,8 @@ class Boleto implements Transacao
             $headeLote = $headeLote + ['codigo_convenio' => $banco->recuperarCodigoConvenio()];
         }
         $headeLote = $headeLote + [
-            'codigo_lote' => '0',
+            'layout_lote' => '045',
+            'codigo_lote' => 0,
             'inscricao_numero' => $empresa->inscricao,
             'empresa_inscricao' => $empresa->tipoInscricao,
             'agencia' => $banco->conta->agencia,
@@ -73,11 +74,10 @@ class Boleto implements Transacao
             'cidade' => $empresa->cidade,
             'estado' => $empresa->estado,
             'tipo_pagamento' => 20,
-            'forma_pagamento' => 31,
-            'total_qtd_registros' => 0,
+            'forma_pagamento' => $banco->formaPagamentoTed(),
+            'total_qtd_registros'=> 0,
             'total_valor_pagtos' => 0
         ];
-
         return $headeLote;
     }
 

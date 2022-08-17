@@ -52,12 +52,12 @@ $itau = new Itau($codigoArquivo, $conta);
 
 #Crio o pagamento
 $seuNumero = 1; #Número sequencial por pagamento controlado por você
-$favorecidoBoleto = new Favorecido('Empresa dona do Boleto', '00.000.000/0001-00');
+$favorecidoBoleto = new Favorecido('Empresa dona do boleto', '00.000.000/0001-00');
 $codigoBarras = '00000.00000 00000.000000 00000.000000 0 00000000000000';
 $pagamento = new PagamentoBoletoItau($codigoBarras, $favorecidoBoleto, '100,00', date("Y-m-d"),$seuNumero);
 
 #Crio o lote do boleto
-$boleto = new Boleto();
+$boleto = new LoteBoleto();
 $boleto->adicionar($pagamento);
 
 #Gero o arquivo

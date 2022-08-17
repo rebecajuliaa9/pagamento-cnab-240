@@ -70,7 +70,7 @@ class GerarArquivo
     public function gerarLote()
     {
         /**
-         * Recupero todas as transações realizadas: Boleto, ted e etc.
+         * Recupero todas as transações realizadas: LoteBoleto, ted e etc.
          */
         foreach ($this->banco->recuperarLotes() as $transacao) {
             $this->valorTotalPagamento = 0;

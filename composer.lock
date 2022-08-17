@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23994768b364772f686ee3ee6257ffc6",
+    "content-hash": "498ba6274bca1c64896d38f36a4f7622",
     "packages": [
         {
             "name": "mikehaertl/php-tmpfile",

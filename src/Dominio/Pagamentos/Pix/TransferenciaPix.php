@@ -65,9 +65,9 @@ class TransferenciaPix implements Pagamento
     {
         /** numero_registro: Obrigatório passar valor zero, o valor é calculado automaticamente
          forma_iniciacao:
-         01” – Chave Pix – tipo Telefone
-        “02” – Chave Pix – tipo Email
-        “03” – Chave Pix – tipo CPF/CNPJ
+         01” – Chave LotePix – tipo Telefone
+        “02” – Chave LotePix – tipo Email
+        “03” – Chave LotePix – tipo CPF/CNPJ
         “04” – Chave Aleatoria
         “05” - Dados Bancários
          */
