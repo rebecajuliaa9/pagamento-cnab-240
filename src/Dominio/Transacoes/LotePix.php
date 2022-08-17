@@ -3,8 +3,7 @@
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaPix;
+use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pix\TransferenciaPix;
 
 class LotePix implements Transacao
 {
