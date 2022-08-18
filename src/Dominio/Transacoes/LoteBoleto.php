@@ -2,7 +2,6 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
-use http\Exception\InvalidArgumentException;
 use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\FormaPagamentoBoleto;
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto\PagamentoBoleto;
@@ -22,7 +21,7 @@ class LoteBoleto implements Transacao
     {
         $this->conteudo = [];
         if(!in_array($this->formaPagamento, [FormaPagamentoBoleto::MESMO_BANCO, FormaPagamentoBoleto::OUTRO_BANCO])){
-            throw new InvalidArgumentException('Forma Pagamento inválida');
+            throw new \InvalidArgumentException('Forma Pagamento inválida');
         }
         $this->formaPagamento = $formaPagamento;
     }
