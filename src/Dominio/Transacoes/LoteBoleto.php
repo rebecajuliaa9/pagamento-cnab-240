@@ -20,7 +20,7 @@ class LoteBoleto implements Transacao
     public function __construct($formaPagamento)
     {
         $this->conteudo = [];
-        if(!in_array($this->formaPagamento, array(FormaPagamentoBoleto::MESMO_BANCO, FormaPagamentoBoleto::OUTRO_BANCO))){
+        if(!in_array($formaPagamento, array(FormaPagamentoBoleto::MESMO_BANCO, FormaPagamentoBoleto::OUTRO_BANCO))){
             throw new \InvalidArgumentException('Forma Pagamento inválida');
         }
         $this->formaPagamento = $formaPagamento;
