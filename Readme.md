@@ -57,7 +57,12 @@ $codigoBarras = '00000.00000 00000.000000 00000.000000 0 00000000000000';
 $pagamento = new PagamentoBoletoItau($codigoBarras, $favorecidoBoleto, '100,00', date("Y-m-d"),$seuNumero);
 
 #Crio o lote do boleto
-$boleto = new LoteBoleto();
+## Obrigatoriamente precisa separar os lotes que são do mesmo banco dos que são em outros bancos
+## Passar como parâmetro na geração do lote as seguintes opções:
+## FormaPagamentoBoleto::MESMO_BANCO | FormaPagamentoBoleto::OUTRO_BANCO
+## Lembrando que sempre os 3 primeiros dígitos é o número do banco, então você consegue validar
+## na sua aplicação a geração do lote
+$boleto = new LoteBoleto(FormaPagamentoBoleto::MESMO_BANCO);
 $boleto->adicionar($pagamento);
 
 #Gero o arquivo
