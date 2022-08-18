@@ -2,6 +2,8 @@
 
 namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
 
+use http\Exception\InvalidArgumentException;
+use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\FormaPagamentoBoleto;
 use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
 use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto\PagamentoBoleto;
 
@@ -11,13 +13,18 @@ class LoteBoleto implements Transacao
      * @var array
      */
     private $conteudo;
+    private $formaPagamento;
 
     /**
-     *
+     * @param $formaPagamento
      */
-    public function __construct()
+    public function __construct($formaPagamento)
     {
         $this->conteudo = [];
+        if(!in_array($this->formaPagamento, [FormaPagamentoBoleto::MESMO_BANCO, FormaPagamentoBoleto::OUTRO_BANCO])){
+            throw new InvalidArgumentException('Forma Pagamento inválida');
+        }
+        $this->formaPagamento = $formaPagamento;
     }
 
     /**
@@ -73,7 +80,7 @@ class LoteBoleto implements Transacao
             'cidade' => $empresa->cidade,
             'estado' => $empresa->estado,
             'tipo_pagamento' => 20,
-            'forma_pagamento' => 31,
+            'forma_pagamento' => $this->formaPagamento,
             'total_qtd_registros' => 0,
             'total_valor_pagtos' => 0
         ];
