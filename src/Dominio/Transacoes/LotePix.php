@@ -52,11 +52,13 @@ class LotePix implements Transacao
          */
         $empresa = $banco->conta->empresa;
         $headeLote = [];
+        $layout_lote = '040';
         if (method_exists($banco, "recuperarCodigoConvenio")) {
             $headeLote = $headeLote + ['codigo_convenio' => $banco->recuperarCodigoConvenio()];
+            $layout_lote = '045';
         }
         $headeLote = $headeLote + [
-            'layout_lote' => '040',
+            'layout_lote' => $layout_lote,
             'codigo_lote' => '0',
             'inscricao_numero' => $empresa->inscricao,
             'empresa_inscricao' => $empresa->tipoInscricao,
