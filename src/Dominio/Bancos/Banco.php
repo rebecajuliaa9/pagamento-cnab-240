@@ -90,14 +90,6 @@ abstract class Banco
     }
 
     /**
-     * @return false|string
-     */
-    public function pastaRetorno()
-    {
-        return HelperBanco::pastaRetorno($this->pastaBanco());
-    }
-
-    /**
      * @return mixed
      */
     abstract public function numero();
