@@ -1,12 +1,12 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Bancos;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\Arquivo;
-use Leandroferreirama\PagamentoCnab240\Aplicacao\GerarArquivo;
-use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
-use Leandroferreirama\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Constantes\Arquivo;
+use RebecaJulia\PagamentoCnab240\Aplicacao\GerarArquivo;
+use RebecaJulia\PagamentoCnab240\Dominio\Empresa\Conta;
+use RebecaJulia\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 abstract class Banco
 {

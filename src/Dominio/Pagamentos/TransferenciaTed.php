@@ -1,13 +1,13 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos;
 
-use http\Exception\InvalidArgumentException;
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
-use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\FavorecidoConta;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use Exception;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Favorecido\Favorecido;
+use RebecaJulia\PagamentoCnab240\Dominio\Favorecido\FavorecidoConta;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class TransferenciaTed implements Pagamento
 {
@@ -61,10 +61,10 @@ class TransferenciaTed implements Pagamento
     {
         /**
          * Valido se a transação é no mesmo banco
-         * @throw InvalidArgumentException
+         * @throw Exception
          */
         if($banco->numero() == $this->conta->codigoBanco){
-            throw new InvalidArgumentException('O banco passado é o mesmo que o banco que fará a transferência! Utilize a opção Transferência mesma conta!');
+            throw new Exception('O banco passado é o mesmo que o banco que fará a transferência! Utilize a opção Transferência mesma conta!');
         }
         //Monto os parâmetros
         $codigoFinalidadeTed = '00007';

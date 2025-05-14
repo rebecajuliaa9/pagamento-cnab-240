@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Favorecido;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Favorecido;
 
 class FavorecidoConta
 {

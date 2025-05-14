@@ -1,10 +1,10 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Aplicacao;
+namespace RebecaJulia\PagamentoCnab240\Aplicacao;
 
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
-use Leandroferreirama\PagamentoCnab240\Dominio\Yaml;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
+use RebecaJulia\PagamentoCnab240\Dominio\Yaml;
 use mikehaertl\tmp\File;
 
 class GerarArquivo

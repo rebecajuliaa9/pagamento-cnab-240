@@ -1,10 +1,10 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Boleto;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class PagamentoBoletoItau extends PagamentoBoleto
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Aplicacao;
+namespace RebecaJulia\PagamentoCnab240\Aplicacao;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\TipoInscricao;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Constantes\TipoInscricao;
 
 class Helper
 {

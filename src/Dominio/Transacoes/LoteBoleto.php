@@ -1,10 +1,10 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Transacoes;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes\FormaPagamentoBoleto;
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto\PagamentoBoleto;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Constantes\FormaPagamentoBoleto;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Boleto\PagamentoBoleto;
 
 class LoteBoleto implements Transacao
 {

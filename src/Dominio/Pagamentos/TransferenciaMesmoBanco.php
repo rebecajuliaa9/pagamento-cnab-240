@@ -1,13 +1,13 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos;
 
-use http\Exception\InvalidArgumentException;
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
-use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\FavorecidoConta;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use Exception;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Favorecido\Favorecido;
+use RebecaJulia\PagamentoCnab240\Dominio\Favorecido\FavorecidoConta;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class TransferenciaMesmoBanco implements Pagamento
 {
@@ -63,7 +63,7 @@ class TransferenciaMesmoBanco implements Pagamento
          * @throw InvalidArgumentException
          */
         if($banco->numero() != $this->conta->codigoBanco){
-            throw new InvalidArgumentException('O banco passado não é o mesmo que o banco que fará a transferência! Utilize a opção TED!');
+            throw new Exception('O banco passado não é o mesmo que o banco que fará a transferência! Utilize a opção TED!');
         }
         return [
             'codigo_lote' => 0,

@@ -1,9 +1,9 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos;
 
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 interface Pagamento
 {

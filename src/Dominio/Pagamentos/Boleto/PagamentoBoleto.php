@@ -1,11 +1,11 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Boleto;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Boleto;
 
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Favorecido\Favorecido;
+use RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 abstract class PagamentoBoleto implements Pagamento
 {

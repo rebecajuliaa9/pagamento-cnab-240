@@ -1,10 +1,10 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Transacoes;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Transacoes;
 
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\TransferenciaMesmoBanco;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
+use RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\TransferenciaMesmoBanco;
 
 class LoteTransferencia implements Transacao
 {

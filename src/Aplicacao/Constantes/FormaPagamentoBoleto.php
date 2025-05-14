@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Aplicacao\Constantes;
+namespace RebecaJulia\PagamentoCnab240\Aplicacao\Constantes;
 
 class FormaPagamentoBoleto
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Bancos;
 
 /**
  * Classe de apoio para as classes do banco

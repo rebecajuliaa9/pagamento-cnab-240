@@ -1,12 +1,12 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pix;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Pix;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
-use Leandroferreirama\PagamentoCnab240\Dominio\Bancos\Banco;
-use Leandroferreirama\PagamentoCnab240\Dominio\Favorecido\Favorecido;
-use Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Dominio\Bancos\Banco;
+use RebecaJulia\PagamentoCnab240\Dominio\Favorecido\Favorecido;
+use RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Pagamento;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
 
 class TransferenciaPix implements Pagamento
 {
@@ -64,12 +64,12 @@ class TransferenciaPix implements Pagamento
     public function conteudo(Banco $banco, Transacao $transacao)
     {
         /** numero_registro: Obrigatório passar valor zero, o valor é calculado automaticamente
-         forma_iniciacao:
-         01” – Chave LotePix – tipo Telefone
-        “02” – Chave LotePix – tipo Email
-        “03” – Chave LotePix – tipo CPF/CNPJ
-        “04” – Chave Aleatoria
-        “05” - Dados Bancários
+         **forma_iniciacao:
+         **01” – Chave LotePix – tipo Telefone
+         **“02” – Chave LotePix – tipo Email
+         **“03” – Chave LotePix – tipo CPF/CNPJ
+         **“04” – Chave Aleatoria
+         **“05” - Dados Bancários
          */
         $camara_centralizadora = '009';
         return [

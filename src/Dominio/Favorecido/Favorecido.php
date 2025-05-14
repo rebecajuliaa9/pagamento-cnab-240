@@ -1,8 +1,8 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Favorecido;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Favorecido;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
 
 class Favorecido
 {

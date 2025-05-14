@@ -1,8 +1,8 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Bancos;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Bancos;
 
-use Leandroferreirama\PagamentoCnab240\Dominio\Empresa\Conta;
+use RebecaJulia\PagamentoCnab240\Dominio\Empresa\Conta;
 
 /**
  * Classe responsável por gerar um arquivo no banco Bradesco

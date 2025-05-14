@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Pagamentos\Pix;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Pagamentos\Pix;
 
 
 class PixEmail implements Pix

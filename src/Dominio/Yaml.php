@@ -1,13 +1,12 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio;
+namespace RebecaJulia\PagamentoCnab240\Dominio;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
-use Leandroferreirama\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
-use Leandroferreirama\PagamentoCnab240\Dominio\Excecoes\YamlException;
-use Leandroferreirama\PagamentoCnab240\Dominio\Transacoes\Transacao;
-use \Symfony\Component\Yaml\Yaml as YamlSymfony;
-
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Dominio\Excecoes\LeiauteException;
+use RebecaJulia\PagamentoCnab240\Dominio\Excecoes\YamlException;
+use RebecaJulia\PagamentoCnab240\Dominio\Transacoes\Transacao;
+use Symfony\Component\Yaml\Yaml as YamlSymfony;
 class Yaml extends YamlSymfony
 {
     /**

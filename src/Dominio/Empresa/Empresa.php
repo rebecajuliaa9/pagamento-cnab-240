@@ -1,8 +1,8 @@
 <?php
 
-namespace Leandroferreirama\PagamentoCnab240\Dominio\Empresa;
+namespace RebecaJulia\PagamentoCnab240\Dominio\Empresa;
 
-use Leandroferreirama\PagamentoCnab240\Aplicacao\Helper;
+use RebecaJulia\PagamentoCnab240\Aplicacao\Helper;
 
 /**
  * Classe responsável pela geração dos dados da empresa que deve ser instanciado nas classes derivadas do banco
