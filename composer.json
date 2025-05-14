@@ -3,13 +3,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Leandroferreirama\\PagamentoCnab240\\": "src/"
+            "RebecaJulia\\PagamentoCnab240\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Leandro Ferreira Marcelli",
-            "email": "suporte@integracaosistema.com.br"
+            "name": "Rebeca Julia",
+            "email": "rebecajuliaa9@gmail.com"
         }
     ],
     "require": {
