@@ -2,9 +2,6 @@
 Essa biblioteca foi desenvolvida para facilitar a integração do seu sistema com os 
 bancos para realização de pagamento. Ela aceita diversas formas de pagamentos.
 
-## Precisa de ajuda para implementar?
-Whatsapp (41) 99778-0000
-
 ## Arquivo
 Cada arquivo podem conter vários lotes, **EXCETO o PIX**. Para pagamento em PIX deve-se 
 utilizar um **arquivo exclusivo**.
@@ -25,7 +22,7 @@ temos implementado:
 ## Instalação
 
 ```bash
-composer require leandroferreirama/pagamento-cnab-240
+composer require rebecajuliaa9/pagamento-cnab-240
 ```
 
 ## Exemplo de Uso (Pagamento em boleto)
@@ -72,3 +69,4 @@ $boleto->adicionar($pagamento);
 $itau->adicionar($boleto);
 $itau->gerarArquivo(Arquivo::DOWNLOAD);
 ```
+Fork realizado a partir do projeto https://github.com/leandroferreirama/pagamento-cnab-240, cuja o autor é o Leandro Ferreira Marcelli
