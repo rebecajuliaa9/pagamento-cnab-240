@@ -72,7 +72,7 @@ class TransferenciaPix implements Pagamento
          **“05” - Dados Bancários
          */
         $camara_centralizadora = '009';
-        return [
+        $conteudo = [
             'codigo_lote' => 0,
             'tipo_movimento' => 0,
             'camara_centralizadora' => $camara_centralizadora,
@@ -89,5 +89,20 @@ class TransferenciaPix implements Pagamento
             'forma_iniciacao' => $this->pix->getTipoChave(),
             'chave' => $this->pix->getChave()
         ];
+
+        if ($this->pix->getTipoChave() === '05') {
+            /** @var PixDadosBancarios $pix */
+            $pix = $this->pix;
+
+            $conteudo = array_merge($conteudo, [
+                'banco_favorecido'      => $pix->getCodigoBanco(),
+                'agencia_favorecido'    => $pix->getAgencia(),
+                'conta_favorecido'      => $pix->getConta(),
+                'conta_dv_favorecido'   => $pix->getContaDigito(),
+                'tipo_conta_favorecido' => $pix->getTipoConta(),
+            ]);
+        }
+
+        return $conteudo;
     }
 }
