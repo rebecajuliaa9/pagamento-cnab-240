@@ -8,12 +8,11 @@ class PixDadosBancarios implements Pix
 
     private $codigoBanco;
     private $agencia;
-    private $agenciaDv;
     private $conta;
     private $conta_digito;
     private $tipoConta;
 
-    public function __construct($codigoBanco, $agencia, $agenciaDv, $conta, $conta_digito, $tipoConta)
+    public function __construct($codigoBanco, $agencia, $conta, $conta_digito, $tipoConta)
     {
         $this->tipoConta = filter_var($tipoConta, FILTER_SANITIZE_STRING);
         $this->agencia = filter_var($agencia, FILTER_SANITIZE_NUMBER_INT);
