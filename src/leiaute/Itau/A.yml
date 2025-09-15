@@ -45,13 +45,9 @@ brancos02:
   pos: [29, 29]
   picture: 'X(01)'
   default: ''
-zeros3:
-  pos: [30, 35]
-  picture: '9(06)'
-  default: ''
 conta_favorecido:
-  pos: [36, 41]
-  picture: '9(06)'
+  pos: [30, 41]
+  picture: '9(12)'
   default: ''
 brancos04:
   pos: [42, 42]
