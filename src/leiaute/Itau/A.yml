@@ -33,6 +33,10 @@ codigo_banco_favorecido:
   pos: [21, 23]
   picture: '9(03)'
   default: ''
+banco_favorecido:
+  pos: [21, 23]
+  picture: '9(03)'
+  default: ''
 zeros:
   pos: [24, 24]
   picture: '9(01)'
